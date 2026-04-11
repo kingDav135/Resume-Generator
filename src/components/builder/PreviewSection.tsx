@@ -3,6 +3,7 @@
 import { useResumeStore } from '@/store/useResumeStore';
 import { motion } from 'framer-motion';
 import { Printer, ZoomIn, ZoomOut, Maximize2 } from 'lucide-react';
+import { ResumeRenderer } from '../resume/ResumeRenderer';
 
 export function PreviewSection() {
   const { data } = useResumeStore();
@@ -35,21 +36,13 @@ export function PreviewSection() {
       {/* Resume Canvas Area */}
       <div className="flex-1 overflow-auto p-8 flex justify-center scrollbar-thin">
         <motion.div 
+          id="resume-content"
           layout
-          className="bg-white shadow-2xl origin-top w-[210mm] min-h-[297mm] p-12 transition-all duration-300"
+          className="bg-white shadow-2xl origin-top w-[210mm] min-h-[297mm] transition-all duration-300"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
         >
-          {/* Resume Content Placeholder */}
-          <div className="h-full border border-dashed border-slate-200 rounded-lg flex flex-col items-center justify-center text-slate-400 p-24 text-center">
-            <div className="h-16 w-16 bg-slate-50 rounded-full flex items-center justify-center mb-4">
-              <Printer size={32} className="opacity-20" />
-            </div>
-            <h3 className="text-xl font-bold text-slate-600 mb-2">Resume Preview</h3>
-            <p className="max-w-xs text-sm">
-              Your resume will be rendered here in real-time. Start typing in the form to see updates!
-            </p>
-          </div>
+          <ResumeRenderer />
         </motion.div>
       </div>
     </div>

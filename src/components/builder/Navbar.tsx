@@ -5,13 +5,24 @@ import { Button } from '@/components/ui/Button';
 import { Moon, Sun, Download, FileText } from 'lucide-react';
 import { useEffect, useState } from 'react';
 
+import { calculateScore } from '@/lib/scoring-utils';
+import { exportToPDF } from '@/lib/pdf-utils';
+
 export function Navbar() {
   const { data, setTheme } = useResumeStore();
   const [mounted, setMounted] = useState(false);
+  const [isExporting, setIsExporting] = useState(false);
+  const { score } = calculateScore(data);
 
   useEffect(() => {
     setMounted(true);
   }, []);
+
+  const handleDownload = async () => {
+    setIsExporting(true);
+    await exportToPDF('resume-content', data.basicInfo.name || 'My');
+    setIsExporting(false);
+  };
 
   const toggleTheme = () => {
     const newTheme = data.theme === 'light' ? 'dark' : 'light';
@@ -39,10 +50,10 @@ export function Navbar() {
             <div className="h-2 w-24 rounded-full bg-accent/20">
               <div 
                 className="h-full rounded-full bg-accent transition-all duration-500" 
-                style={{ width: '45%' }} // Placeholder for now
+                style={{ width: `${score}%` }}
               />
             </div>
-            <span className="text-sm font-bold text-accent">45</span>
+            <span className="text-sm font-bold text-accent">{score}</span>
           </div>
 
           <Button 
@@ -54,9 +65,14 @@ export function Navbar() {
             {data.theme === 'light' ? <Moon size={20} /> : <Sun size={20} />}
           </Button>
 
-          <Button variant="primary" className="gap-2 group">
-            <Download size={18} className="group-hover:translate-y-0.5 transition-transform" />
-            <span className="hidden sm:inline">Download PDF</span>
+          <Button 
+            variant="primary" 
+            className="gap-2 group"
+            onClick={handleDownload}
+            disabled={isExporting}
+          >
+            <Download size={18} className={isExporting ? "animate-bounce" : "group-hover:translate-y-0.5 transition-transform"} />
+            <span className="hidden sm:inline">{isExporting ? 'Exporting...' : 'Download PDF'}</span>
           </Button>
         </div>
       </div>

@@ -12,6 +12,17 @@ export function BasicInfo() {
     updateBasicInfo({ [name]: value });
   };
 
+  const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        updateBasicInfo({ profileImage: reader.result as string });
+      };
+      reader.readAsDataURL(file);
+    }
+  };
+
   return (
     <div className="space-y-8">
       <div>
@@ -20,12 +31,32 @@ export function BasicInfo() {
       </div>
 
       <div className="flex flex-col md:flex-row gap-8">
-        {/* Profile Image Upload Placeholder */}
+        {/* Profile Image Upload */}
         <div className="flex-shrink-0">
           <label className="block text-sm font-medium text-foreground/80 mb-2 ml-1">Profile Photo</label>
-          <div className="h-32 w-32 rounded-3xl border-2 border-dashed border-border flex flex-col items-center justify-center bg-card hover:bg-accent/5 transition-colors cursor-pointer group">
-            <Camera className="text-foreground/20 group-hover:text-primary/40 transition-colors" size={32} />
-            <span className="text-[10px] font-semibold text-foreground/40 mt-2 uppercase tracking-tighter">Upload</span>
+          <div 
+            onClick={() => document.getElementById('profile-upload')?.click()}
+            className="h-32 w-32 rounded-3xl border-2 border-dashed border-border flex flex-col items-center justify-center bg-card hover:bg-accent/5 transition-colors cursor-pointer group relative overflow-hidden"
+          >
+            {data.basicInfo.profileImage ? (
+              <img 
+                src={data.basicInfo.profileImage} 
+                className="h-full w-full object-cover transition-transform group-hover:scale-110" 
+                alt="Profile" 
+              />
+            ) : (
+              <>
+                <Camera className="text-foreground/20 group-hover:text-primary/40 transition-colors" size={32} />
+                <span className="text-[10px] font-semibold text-foreground/40 mt-2 uppercase tracking-tighter">Upload</span>
+              </>
+            )}
+            <input 
+              id="profile-upload"
+              type="file" 
+              accept="image/*" 
+              className="hidden" 
+              onChange={handleImageChange} 
+            />
           </div>
         </div>
 
