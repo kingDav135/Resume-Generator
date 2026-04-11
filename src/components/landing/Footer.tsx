@@ -1,6 +1,6 @@
 'use client';
 
-import { FileText, Twitter, Github, Linkedin, Mail } from 'lucide-react';
+import { FileText, MessageCircle, Code2, Users, Mail } from 'lucide-react';
 import Link from 'next/link';
 
 export function Footer() {
@@ -21,9 +21,9 @@ export function Footer() {
               Empowering job seekers with premium design and data-driven resume building tools.
             </p>
             <div className="flex items-center gap-4 text-foreground/40">
-              <Twitter size={18} className="hover:text-primary cursor-pointer transition-colors" />
-              <Github size={18} className="hover:text-primary cursor-pointer transition-colors" />
-              <Linkedin size={18} className="hover:text-primary cursor-pointer transition-colors" />
+              <MessageCircle size={18} className="hover:text-primary cursor-pointer transition-colors" />
+              <Code2 size={18} className="hover:text-primary cursor-pointer transition-colors" />
+              <Users size={18} className="hover:text-primary cursor-pointer transition-colors" />
             </div>
           </div>
 
