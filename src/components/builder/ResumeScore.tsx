@@ -3,7 +3,7 @@
 import { useResumeStore } from '@/store/useResumeStore';
 import { calculateScore } from '@/lib/scoring-utils';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Info, AlertCircle, Lightbulb } from 'lucide-react';
+import { AlertCircle, Lightbulb } from 'lucide-react';
 
 export function ResumeScore() {
   const { data } = useResumeStore();

@@ -3,7 +3,7 @@
 import { useResumeStore } from '@/store/useResumeStore';
 import { Button } from '@/components/ui/Button';
 import { Moon, Sun, Download, FileText, ArrowRight } from 'lucide-react';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { usePathname, useRouter } from 'next/navigation';
 import Link from 'next/link';
 
@@ -12,17 +12,12 @@ import { exportToPDF } from '@/lib/pdf-utils';
 
 export function Navbar() {
   const { data, setTheme } = useResumeStore();
-  const [mounted, setMounted] = useState(false);
   const [isExporting, setIsExporting] = useState(false);
   const pathname = usePathname();
   const router = useRouter();
   
   const isBuilder = pathname === '/builder';
   const { score } = calculateScore(data);
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
 
   const handleDownload = async () => {
     setIsExporting(true);
@@ -35,8 +30,6 @@ export function Navbar() {
     setTheme(newTheme);
     document.documentElement.classList.toggle('dark', newTheme === 'dark');
   };
-
-  if (!mounted) return null;
 
   return (
     <nav className="sticky top-0 z-50 w-full border-b border-border bg-background/80 backdrop-blur-md">

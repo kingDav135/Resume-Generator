@@ -1,7 +1,7 @@
 import { ResumeData } from '@/store/useResumeStore';
 
 export function Bold({ data }: { data: ResumeData }) {
-  const { basicInfo, experience, education, skills, projects } = data;
+  const { basicInfo, experience, education, skills } = data;
 
   return (
     <div className="flex flex-col h-full bg-slate-950 text-white font-sans overflow-hidden">

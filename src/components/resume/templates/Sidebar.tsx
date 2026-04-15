@@ -1,5 +1,6 @@
 import { ResumeData } from '@/store/useResumeStore';
-import { Mail, Phone, MapPin, Briefcase, GraduationCap, Code2, Link as LinkIcon, User } from 'lucide-react';
+import Image from 'next/image';
+import { Mail, Phone, MapPin, Link as LinkIcon, User } from 'lucide-react';
 
 export function Sidebar({ data }: { data: ResumeData }) {
   const { basicInfo, experience, education, skills, projects } = data;
@@ -11,7 +12,14 @@ export function Sidebar({ data }: { data: ResumeData }) {
         <div className="space-y-6">
           {basicInfo.profileImage ? (
             <div className="h-40 w-40 rounded-full border-4 border-slate-700 mx-auto overflow-hidden shadow-2xl">
-              <img src={basicInfo.profileImage} alt={basicInfo.name} className="h-full w-full object-cover" />
+              <Image
+                src={basicInfo.profileImage}
+                alt={basicInfo.name || 'Profile image'}
+                width={160}
+                height={160}
+                unoptimized
+                className="h-full w-full object-cover"
+              />
             </div>
           ) : (
             <div className="h-40 w-40 rounded-full bg-slate-700 mx-auto flex items-center justify-center text-slate-500">

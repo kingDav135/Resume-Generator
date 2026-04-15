@@ -1,5 +1,6 @@
 import { ResumeData } from '@/store/useResumeStore';
-import { Mail, Phone, MapPin, Globe, Briefcase, GraduationCap, Code2, Sparkles, User } from 'lucide-react';
+import Image from 'next/image';
+import { Mail, Phone, MapPin, Globe, Briefcase, GraduationCap, Code2, Sparkles } from 'lucide-react';
 
 export function Modern({ data }: { data: ResumeData }) {
   const { basicInfo, experience, education, skills, projects } = data;
@@ -18,7 +19,14 @@ export function Modern({ data }: { data: ResumeData }) {
           </div>
           {basicInfo.profileImage && (
             <div className="h-24 w-24 rounded-2xl border-4 border-white/20 overflow-hidden shadow-xl">
-               <img src={basicInfo.profileImage} alt={basicInfo.name} className="h-full w-full object-cover" />
+               <Image
+                 src={basicInfo.profileImage}
+                 alt={basicInfo.name || 'Profile image'}
+                 width={96}
+                 height={96}
+                 unoptimized
+                 className="h-full w-full object-cover"
+               />
             </div>
           )}
         </div>

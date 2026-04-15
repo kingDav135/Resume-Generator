@@ -1,102 +1,98 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { 
-  Layers, 
-  BarChart3, 
-  Download, 
-  Smartphone, 
-  ShieldCheck, 
-  Zap,
-  MousePointer2,
-  Clock
-} from 'lucide-react';
+import { Shield, Cpu, BarChart3, Globe, Code2 } from 'lucide-react';
 
 const FEATURES = [
   {
-    icon: <BarChart3 className="text-secondary" />,
-    title: 'Smart Scoring',
-    description: 'Real-time AI-powered analysis to optimize your impact.',
-    className: 'md:col-span-2 md:row-span-2 bg-gradient-to-br from-secondary/5 to-transparent',
-    large: true
+    icon: <BarChart3 className="text-primary" />,
+    title: 'Atomic Scoring Engine',
+    description: 'Proprietary algorithms analyze 50+ data points for maximum ATS compatibility.',
+    className: 'md:col-span-2 md:row-span-1',
+    value: '99.9%',
   },
   {
-    icon: <Layers className="text-primary" />,
-    title: '10+ Styles',
-    description: 'Expert-crafted templates for every industry.',
+    icon: <Cpu className="text-accent" />,
+    title: 'Instant Compute',
+    description: 'Sub-second rendering of complex PDF structures.',
+    className: 'md:col-span-1 md:row-span-1',
+    value: '< 100ms',
+  },
+  {
+    icon: <Globe className="text-primary" />,
+    title: 'Global Standards',
+    description: 'Templates optimized for US, EU, and Asian markets.',
     className: 'md:col-span-1 md:row-span-1',
   },
   {
-    icon: <MousePointer2 className="text-accent" />,
-    title: 'Live Preview',
-    description: 'See changes instantly as you type.',
+    icon: <Code2 className="text-accent" />,
+    title: 'Dynamic Source',
+    description: 'Export as JSON, PDF, or Markdown formats.',
     className: 'md:col-span-1 md:row-span-1',
   },
   {
-    icon: <Zap className="text-yellow-500" />,
-    title: 'Instant Export',
-    description: 'Pro-grade PDF in one click.',
-    className: 'md:col-span-1 md:row-span-2 bg-gradient-to-t from-accent/5 to-transparent',
-  },
-  {
-    icon: <Smartphone className="text-orange-500" />,
-    title: 'Any Device',
-    description: 'Build on your phone or desktop.',
+    icon: <Shield className="text-primary" />,
+    title: 'Zero Trust Data',
+    description: 'Biometric-grade security with purely local storage.',
     className: 'md:col-span-1 md:row-span-1',
   },
-  {
-    icon: <ShieldCheck className="text-green-500" />,
-    title: 'Private & Secure',
-    description: 'Your data never leaves your browser.',
-    className: 'md:col-span-1 md:row-span-1',
-  }
 ];
 
 export function Features() {
   return (
-    <section id="features" className="py-32 relative overflow-hidden">
-      <div className="container mx-auto px-4">
-        <div className="text-center max-w-2xl mx-auto mb-20">
-          <motion.h2 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-4xl md:text-5xl font-black tracking-tighter mb-6 uppercase italic"
-          >
-            Engineered for <br />
-            <span className="text-primary underline decoration-secondary decoration-4 underline-offset-8">Maximum Impact.</span>
-          </motion.h2>
-          <p className="text-foreground/50 font-medium text-lg leading-relaxed">
-             We’ve combined cutting-edge design with powerful rules to help you land that interview.
+    <section id="features" className="py-32 relative overflow-hidden bg-black">
+      <div className="container mx-auto px-4 relative z-10">
+        <div className="flex flex-col md:flex-row items-end justify-between mb-24 gap-8">
+          <div className="max-w-xl">
+            <motion.div
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              className="text-primary font-black text-[10px] uppercase tracking-[0.4em] mb-4"
+            >
+              System Capabilities
+            </motion.div>
+            <h2 className="text-4xl md:text-7xl font-black tracking-tighter uppercase italic leading-[0.9]">
+              Technological <br />
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent">Superiority.</span>
+            </h2>
+          </div>
+          <p className="text-white/30 font-medium text-lg max-w-sm">
+            We rebuilt the resume from the ground up using modern engineering principles.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 auto-rows-[200px]">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           {FEATURES.map((feature, index) => (
             <motion.div
               key={index}
-              initial={{ opacity: 0, scale: 0.95 }}
-              whileInView={{ opacity: 1, scale: 1 }}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: index * 0.05 }}
-              whileHover={{ y: -5 }}
-              className={`p-8 rounded-[2.5rem] border border-border/50 glass relative group overflow-hidden ${feature.className}`}
+              transition={{ delay: index * 0.1 }}
+              className={`glow-border p-10 rounded-3xl group overflow-hidden ${feature.className}`}
             >
-              <div className="h-full flex flex-col justify-between relative z-10">
-                <div className={`h-14 w-14 rounded-2xl bg-slate-50 dark:bg-slate-800/50 flex items-center justify-center mb-6 group-hover:scale-110 group-hover:rotate-3 transition-transform shadow-sm`}>
-                  {feature.icon}
+              <div className="relative z-10 h-full flex flex-col">
+                <div className="flex justify-between items-start mb-12">
+                  <div className="h-12 w-12 rounded-2xl bg-white/5 flex items-center justify-center text-primary group-hover:scale-110 transition-transform">
+                    {feature.icon}
+                  </div>
+                  {feature.value && (
+                    <span className="text-2xl font-black font-mono text-white/10 group-hover:text-primary transition-colors">
+                      {feature.value}
+                    </span>
+                  )}
                 </div>
-                <div>
-                  <h3 className={`font-black mb-2 tracking-tight ${feature.large ? 'text-2xl' : 'text-lg'}`}>
+                <div className="mt-auto">
+                  <h3 className="font-black text-xs uppercase tracking-[0.3em] mb-3 text-white">
                     {feature.title}
                   </h3>
-                  <p className="text-foreground/50 text-sm font-medium leading-relaxed">
+                  <p className="text-white/40 text-sm font-medium leading-snug">
                     {feature.description}
                   </p>
                 </div>
               </div>
-              {/* Decorative Gradient Glow */}
-              <div className="absolute -right-4 -bottom-4 w-24 h-24 bg-primary/10 rounded-full blur-2xl group-hover:bg-primary/20 transition-colors" />
+              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent -translate-x-full group-hover:animate-shimmer" />
             </motion.div>
           ))}
         </div>

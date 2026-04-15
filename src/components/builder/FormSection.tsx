@@ -78,7 +78,7 @@ export function FormSection() {
                      </div>
                      <h4 className="text-lg font-bold mb-2">Everything looks great!</h4>
                      <p className="text-sm text-foreground/40 max-w-xs mx-auto">
-                        You've completed all sections. Use the download button in the header to get your PDF.
+                        You&rsquo;ve completed all sections. Use the download button in the header to get your PDF.
                      </p>
                   </div>
                </div>

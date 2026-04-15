@@ -1,7 +1,7 @@
 import { ResumeData } from '@/store/useResumeStore';
 
 export function Elegant({ data }: { data: ResumeData }) {
-  const { basicInfo, experience, education, skills, projects } = data;
+  const { basicInfo, experience, education, skills } = data;
 
   return (
     <div className="flex flex-col h-full bg-white text-slate-900 font-serif p-20 border-[20px] border-slate-50">
@@ -20,7 +20,7 @@ export function Elegant({ data }: { data: ResumeData }) {
         {basicInfo.summary && (
           <section className="text-center">
             <p className="text-lg text-slate-600 leading-relaxed font-serif italic italic-none px-12">
-              "{basicInfo.summary}"
+              &quot;{basicInfo.summary}&quot;
             </p>
           </section>
         )}

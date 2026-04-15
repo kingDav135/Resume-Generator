@@ -1,5 +1,4 @@
 import { ResumeData } from '@/store/useResumeStore';
-import { Mail, Phone, MapPin } from 'lucide-react';
 
 export function Compact({ data }: { data: ResumeData }) {
   const { basicInfo, experience, education, skills, projects } = data;

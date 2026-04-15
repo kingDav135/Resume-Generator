@@ -3,6 +3,7 @@
 import { useResumeStore } from '@/store/useResumeStore';
 import { Input } from '@/components/ui/Input';
 import { Camera } from 'lucide-react';
+import Image from 'next/image';
 
 export function BasicInfo() {
   const { data, updateBasicInfo } = useResumeStore();
@@ -27,7 +28,7 @@ export function BasicInfo() {
     <div className="space-y-8">
       <div>
         <h2 className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-purple">Basic Information</h2>
-        <p className="text-foreground/60">Let's start with your contact details and professional title.</p>
+        <p className="text-foreground/60">Let&rsquo;s start with your contact details and professional title.</p>
       </div>
 
       <div className="flex flex-col md:flex-row gap-8">
@@ -39,10 +40,12 @@ export function BasicInfo() {
             className="h-32 w-32 rounded-3xl border-2 border-dashed border-border flex flex-col items-center justify-center bg-card hover:bg-accent/5 transition-colors cursor-pointer group relative overflow-hidden"
           >
             {data.basicInfo.profileImage ? (
-              <img 
-                src={data.basicInfo.profileImage} 
-                className="h-full w-full object-cover transition-transform group-hover:scale-110" 
-                alt="Profile" 
+              <Image
+                src={data.basicInfo.profileImage}
+                alt="Profile"
+                fill
+                unoptimized
+                className="object-cover transition-transform group-hover:scale-110"
               />
             ) : (
               <>

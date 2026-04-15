@@ -1,7 +1,6 @@
 'use client';
 
 import { useResumeStore } from '@/store/useResumeStore';
-import { motion } from 'framer-motion';
 import { Sparkles, MessageSquareQuote } from 'lucide-react';
 
 export function Summary() {

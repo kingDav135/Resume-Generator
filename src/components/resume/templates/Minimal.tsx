@@ -1,8 +1,7 @@
 import { ResumeData } from '@/store/useResumeStore';
-import { Mail, Phone, MapPin } from 'lucide-react';
 
 export function Minimal({ data }: { data: ResumeData }) {
-  const { basicInfo, experience, education, skills, projects } = data;
+  const { basicInfo, experience, education, skills } = data;
 
   return (
     <div className="flex flex-col h-full bg-white text-zinc-900 font-sans p-16">

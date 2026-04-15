@@ -1,8 +1,7 @@
 import { ResumeData } from '@/store/useResumeStore';
-import { Mail, Phone, MapPin } from 'lucide-react';
 
 export function Professional({ data }: { data: ResumeData }) {
-  const { basicInfo, experience, education, skills, projects } = data;
+  const { basicInfo, experience, education, skills } = data;
 
   return (
     <div className="flex flex-col h-full bg-white text-slate-800 font-serif p-16">

@@ -3,7 +3,7 @@
 import { useResumeStore } from '@/store/useResumeStore';
 import { Input } from '@/components/ui/Input';
 import { Button } from '@/components/ui/Button';
-import { Plus, Trash2, Code2, Link as LinkIcon } from 'lucide-react';
+import { Plus, Trash2, Code2 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 export function Projects() {

@@ -1,6 +1,6 @@
 'use client';
 
-import { useResumeStore, Experience as ExperienceType } from '@/store/useResumeStore';
+import { useResumeStore } from '@/store/useResumeStore';
 import { Input } from '@/components/ui/Input';
 import { Button } from '@/components/ui/Button';
 import { Plus, Trash2, ChevronDown, ChevronUp, Briefcase } from 'lucide-react';
@@ -19,7 +19,6 @@ export function Experience() {
 
   const handleAdd = () => {
     addExperience();
-    // Auto expand the new entry (it will be the last one)
     setTimeout(() => {
       const last = data.experience[data.experience.length - 1];
       if (last) setExpandedId(last.id);
@@ -62,7 +61,7 @@ export function Experience() {
                 expandedId === exp.id ? 'shadow-soft border-primary/30' : 'hover:border-primary/20'
               }`}
             >
-              <div 
+              <div
                 className="p-4 flex items-center justify-between cursor-pointer"
                 onClick={() => toggleExpand(exp.id)}
               >
@@ -80,9 +79,9 @@ export function Experience() {
                   </div>
                 </div>
                 <div className="flex items-center gap-2">
-                  <Button 
-                    variant="ghost" 
-                    size="icon" 
+                  <Button
+                    variant="ghost"
+                    size="icon"
                     onClick={(e) => {
                       e.stopPropagation();
                       removeExperience(exp.id);
@@ -130,7 +129,7 @@ export function Experience() {
                         <label className="text-sm font-medium text-foreground/80 ml-1">Key Responsibilities & Achievements</label>
                         <textarea
                           className="w-full h-32 rounded-2xl border border-border bg-card px-4 py-3 text-base transition-colors placeholder:text-foreground/40 focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary"
-                          placeholder="• Led a team of 5 developers...&#10;• Reduced load time by 40%..."
+                          placeholder={"- Led a team of 5 developers...\n- Reduced load time by 40%..."}
                           value={exp.description}
                           onChange={(e) => updateExperience(exp.id, { description: e.target.value })}
                         />

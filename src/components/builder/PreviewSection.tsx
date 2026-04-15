@@ -2,7 +2,7 @@
 
 import { useResumeStore } from '@/store/useResumeStore';
 import { motion } from 'framer-motion';
-import { Printer, ZoomIn, ZoomOut, Maximize2 } from 'lucide-react';
+import { ZoomIn, ZoomOut, Maximize2 } from 'lucide-react';
 import { ResumeRenderer } from '../resume/ResumeRenderer';
 
 export function PreviewSection() {

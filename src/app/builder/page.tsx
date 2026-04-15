@@ -2,15 +2,13 @@
 
 import { FormSection } from '@/components/builder/FormSection';
 import { PreviewSection } from '@/components/builder/PreviewSection';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { useResumeStore } from '@/store/useResumeStore';
 
 export default function Home() {
   const { data } = useResumeStore();
-  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
-    setMounted(true);
     // Sync dark mode class
     if (data.theme === 'dark') {
       document.documentElement.classList.add('dark');
@@ -18,8 +16,6 @@ export default function Home() {
       document.documentElement.classList.remove('dark');
     }
   }, [data.theme]);
-
-  if (!mounted) return null;
 
   return (
     <div className="flex flex-col lg:flex-row h-[calc(100vh-64px)] overflow-hidden">
