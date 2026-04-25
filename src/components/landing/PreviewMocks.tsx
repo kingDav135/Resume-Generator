@@ -21,7 +21,7 @@ const SECTION_CARDS = [
     tone: 'rose',
     body: 'Created buyer-specific stories used across demo pages, lifecycle email, and sales enablement decks.',
   },
-];
+] as const;
 
 const PREVIEW_SKILLS = ['Go-to-market', 'Enablement', 'Retention', 'Research'];
 
