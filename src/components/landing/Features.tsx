@@ -1,100 +1,80 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Shield, Cpu, BarChart3, Globe, Code2 } from 'lucide-react';
+import { Brain, Eye, FileText, Layers3, Sparkles, WandSparkles } from 'lucide-react';
 
-const FEATURES = [
+const MODULES = [
   {
-    icon: <BarChart3 className="text-primary" />,
-    title: 'Atomic Scoring Engine',
-    description: 'Proprietary algorithms analyze 50+ data points for maximum ATS compatibility.',
-    className: 'md:col-span-2 md:row-span-1',
-    value: '99.9%',
+    icon: <Layers3 className="text-primary" size={24} />,
+    title: 'Adaptive sections',
+    description: 'Switch between summary, projects, skills, education, and experience without losing structure.',
   },
   {
-    icon: <Cpu className="text-accent" />,
-    title: 'Instant Compute',
-    description: 'Sub-second rendering of complex PDF structures.',
-    className: 'md:col-span-1 md:row-span-1',
-    value: '< 100ms',
+    icon: <Eye className="text-accent" size={24} />,
+    title: 'Always-on preview',
+    description: 'Watch the page shape itself while you write, edit, and reorder details.',
   },
   {
-    icon: <Globe className="text-primary" />,
-    title: 'Global Standards',
-    description: 'Templates optimized for US, EU, and Asian markets.',
-    className: 'md:col-span-1 md:row-span-1',
+    icon: <Brain className="text-primary" size={24} />,
+    title: 'Smarter writing cues',
+    description: 'Get prompts that push your bullets toward clearer outcomes and stronger phrasing.',
   },
   {
-    icon: <Code2 className="text-accent" />,
-    title: 'Dynamic Source',
-    description: 'Export as JSON, PDF, or Markdown formats.',
-    className: 'md:col-span-1 md:row-span-1',
+    icon: <FileText className="text-accent" size={24} />,
+    title: 'Export-ready formatting',
+    description: 'Keep spacing, hierarchy, and polish intact when it is time to download your PDF.',
   },
   {
-    icon: <Shield className="text-primary" />,
-    title: 'Zero Trust Data',
-    description: 'Biometric-grade security with purely local storage.',
-    className: 'md:col-span-1 md:row-span-1',
+    icon: <WandSparkles className="text-primary" size={24} />,
+    title: 'Template variation',
+    description: 'Move between layout directions without restarting the whole document.',
+  },
+  {
+    icon: <Sparkles className="text-accent" size={24} />,
+    title: 'Cleaner final pass',
+    description: 'Spot weak sections, missing details, and visual imbalance before you send applications.',
   },
 ];
 
 export function Features() {
   return (
-    <section id="features" className="py-32 relative overflow-hidden bg-black">
-      <div className="container mx-auto px-4 relative z-10">
-        <div className="flex flex-col md:flex-row items-end justify-between mb-24 gap-8">
-          <div className="max-w-xl">
-            <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              className="text-primary font-black text-[10px] uppercase tracking-[0.4em] mb-4"
-            >
-              System Capabilities
-            </motion.div>
-            <h2 className="text-4xl md:text-7xl font-black tracking-tighter uppercase italic leading-[0.9]">
-              Technological <br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent">Superiority.</span>
+    <section id="features" className="bg-background py-32 lg:py-40">
+      <div className="container mx-auto px-6 lg:px-8">
+        <div className="grid gap-14 lg:grid-cols-[0.8fr_1.2fr] lg:gap-20">
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="space-y-6"
+          >
+            <p className="text-xs font-bold uppercase tracking-[0.3em] text-primary">Adaptive tools</p>
+            <h2 className="max-w-md text-4xl font-black leading-tight tracking-[-0.03em] md:text-5xl">
+              A modular builder that keeps evolving with your resume.
             </h2>
-          </div>
-          <p className="text-white/30 font-medium text-lg max-w-sm">
-            We rebuilt the resume from the ground up using modern engineering principles.
-          </p>
-        </div>
+            <p className="max-w-md text-lg leading-8 text-foreground/68">
+              The reference site leans on tool blocks and product modules, so this section does the same for ResumeFlow:
+              flexible pieces, clearer hierarchy, and lots of visual breathing room.
+            </p>
+          </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-          {FEATURES.map((feature, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: index * 0.1 }}
-              className={`glow-border p-10 rounded-3xl group overflow-hidden ${feature.className}`}
-            >
-              <div className="relative z-10 h-full flex flex-col">
-                <div className="flex justify-between items-start mb-12">
-                  <div className="h-12 w-12 rounded-2xl bg-white/5 flex items-center justify-center text-primary group-hover:scale-110 transition-transform">
-                    {feature.icon}
-                  </div>
-                  {feature.value && (
-                    <span className="text-2xl font-black font-mono text-white/10 group-hover:text-primary transition-colors">
-                      {feature.value}
-                    </span>
-                  )}
+          <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
+            {MODULES.map((module, index) => (
+              <motion.div
+                key={module.title}
+                initial={{ opacity: 0, y: 24 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.08 }}
+                className="rounded-[1.8rem] border border-border/60 bg-white/50 p-7 shadow-soft backdrop-blur-sm"
+              >
+                <div className="mb-5 flex h-12 w-12 items-center justify-center rounded-2xl bg-foreground/[0.03]">
+                  {module.icon}
                 </div>
-                <div className="mt-auto">
-                  <h3 className="font-black text-xs uppercase tracking-[0.3em] mb-3 text-white">
-                    {feature.title}
-                  </h3>
-                  <p className="text-white/40 text-sm font-medium leading-snug">
-                    {feature.description}
-                  </p>
-                </div>
-              </div>
-              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent -translate-x-full group-hover:animate-shimmer" />
-            </motion.div>
-          ))}
+                <h3 className="text-lg font-semibold text-foreground">{module.title}</h3>
+                <p className="mt-3 text-sm leading-7 text-foreground/65">{module.description}</p>
+              </motion.div>
+            ))}
+          </div>
         </div>
       </div>
     </section>

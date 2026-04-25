@@ -2,119 +2,73 @@
 
 import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/Button';
+import { ArrowRight } from 'lucide-react';
 import { useRouter } from 'next/navigation';
-import { ArrowUpRight, ShieldCheck } from 'lucide-react';
-
-const TEMPLATES = [
-  { id: 'modern', name: 'Layout 01', type: 'Centered', popular: true },
-  { id: 'minimal', name: 'Layout 02', type: 'Atomic' },
-  { id: 'professional', name: 'Layout 03', type: 'Executive' },
-  { id: 'creative', name: 'Layout 04', type: 'Sidebar' },
-  { id: 'sidebar', name: 'Layout 05', type: 'Dynamic' },
-  { id: 'bold', name: 'Layout 06', type: 'Structural' },
-];
+import { landingTemplatePreviews } from './previewData';
+import { TemplateDirectionPreview } from './PreviewMocks';
 
 export function TemplateShowcase() {
   const router = useRouter();
 
   return (
-    <section id="templates" className="py-32 bg-black overflow-hidden relative">
-      {/* Decorative Glow */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-primary/5 blur-[150px] -z-10" />
-
-      <div className="container mx-auto px-4">
-        <div className="flex flex-col lg:flex-row items-end justify-between mb-24 gap-8">
-          <div className="max-w-2xl text-left">
-            <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              className="text-primary font-black text-[10px] uppercase tracking-[0.4em] mb-4"
-            >
-              Architectural Library
-            </motion.div>
-            <h2 className="text-4xl md:text-8xl font-black tracking-tighter mb-8 uppercase italic leading-[0.9]">
-               Design <br />
-               <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent">Blueprints.</span>
+    <section id="templates" className="bg-background py-32 lg:py-40">
+      <div className="container mx-auto px-6 lg:px-8">
+        <div className="mb-16 flex flex-col gap-6 lg:mb-20 lg:flex-row lg:items-end lg:justify-between">
+          <div className="max-w-2xl">
+            <p className="text-xs font-bold uppercase tracking-[0.3em] text-primary">Visualize the format</p>
+            <h2 className="mt-4 text-4xl font-black leading-tight tracking-[-0.03em] md:text-5xl">
+              Switch the same content across polished layout directions.
             </h2>
           </div>
-          <Button 
-             variant="ghost" 
-             className="rounded-full px-10 h-14 font-black text-[10px] uppercase tracking-[0.4em] border border-white/10 hover:bg-white/5 group"
-             onClick={() => router.push('/builder')}
-          >
-             Explore All <ArrowUpRight size={16} className="ml-2 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
-          </Button>
+          <p className="max-w-lg text-lg leading-8 text-foreground/68">
+            Inspired by the reference&apos;s large product cards, these previews feel more like premium format blocks than a
+            small carousel of templates.
+          </p>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-          {TEMPLATES.map((tmpl, index) => (
+        <div className="grid gap-6 xl:grid-cols-3">
+          {landingTemplatePreviews.map((layout, index) => (
             <motion.div
-              key={tmpl.id}
-              initial={{ opacity: 0, y: 30 }}
+              key={layout.id}
+              initial={{ opacity: 0, y: 24 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: index * 0.05 }}
-              className="group cursor-pointer"
-              onClick={() => router.push('/builder')}
+              transition={{ delay: index * 0.12 }}
+              className="group overflow-hidden rounded-[2rem] border border-border/60 bg-white/55 shadow-soft"
             >
-              <div className="aspect-[3/4.2] rounded-[2.5rem] glow-border glass overflow-hidden relative mb-8 transition-all duration-500">
-                {/* Most Popular Badge */}
-                {tmpl.popular && (
-                  <div className="absolute top-6 right-6 z-20 flex items-center gap-2 px-3 py-1 rounded-full bg-primary/20 border border-primary/50 text-primary text-[8px] font-black uppercase tracking-widest shadow-glow">
-                    <ShieldCheck size={10} />
-                    Verified Best
+              <div className={`relative h-[27rem] bg-gradient-to-br ${layout.accent} p-6 text-white`}>
+                <div className="rounded-[1.6rem] bg-white/16 p-5 backdrop-blur-sm">
+                  <div className="mb-5 flex items-center justify-between">
+                    <div>
+                      <p className="text-[0.65rem] font-bold uppercase tracking-[0.28em] text-white/65">Preview</p>
+                      <p className="mt-2 text-sm font-semibold text-white/90">Same resume, different visual voice</p>
+                    </div>
+                    <div className="rounded-full border border-white/30 px-3 py-1 text-xs font-semibold">
+                      {layout.name}
+                    </div>
                   </div>
-                )}
 
-                {/* Technical Abstract Illustration */}
-                <div className="absolute inset-0 p-10 flex flex-col gap-8">
-                   <div className="flex items-center gap-4 border-b border-white/5 pb-8">
-                      <div className="h-12 w-12 rounded-2xl bg-white/5 flex items-center justify-center border border-white/10 group-hover:border-primary/50 transition-colors">
-                         <div className="h-4 w-4 rounded-full border-2 border-primary/50 animate-pulse" />
-                      </div>
-                      <div className="space-y-3 flex-1">
-                        <div className="h-2 w-1/2 bg-white/10 rounded-full group-hover:bg-primary/20 transition-colors" />
-                        <div className="h-1.5 w-1/3 bg-white/5 rounded-full" />
-                      </div>
-                   </div>
-                   
-                   <div className="flex-1 flex gap-8">
-                      {tmpl.id === 'creative' || tmpl.id === 'sidebar' ? (
-                        <div className="w-1/3 h-full border-r border-white/5 pr-4 space-y-4">
-                           <div className="h-1.5 w-full bg-white/10 rounded-full" />
-                           <div className="h-1.5 w-3/4 bg-white/5 rounded-full" />
-                           <div className="h-1.5 w-full bg-white/5 rounded-full" />
-                        </div>
-                      ) : null}
-                      <div className="flex-1 space-y-8">
-                         <div className="space-y-4">
-                           <div className="h-2 w-full bg-white/10 rounded-full" />
-                           <div className="h-2 w-full bg-white/5 rounded-full" />
-                           <div className="h-2 w-3/4 bg-white/5 rounded-full" />
-                         </div>
-                         <div className="grid grid-cols-1 gap-4">
-                            <div className="h-32 w-full rounded-2xl border border-white/5 border-dashed group-hover:border-primary/30 transition-colors" />
-                         </div>
-                      </div>
-                   </div>
-                </div>
-
-                {/* Shimmer Effect */}
-                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent -translate-x-full group-hover:animate-shimmer" />
-
-                {/* Hover Action */}
-                <div className="absolute bottom-8 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-4 group-hover:translate-y-0">
-                   <div className="px-10 py-3 rounded-2xl bg-white text-black text-[10px] font-black uppercase tracking-[0.3em] shadow-2xl">
-                      Select Architecture
-                   </div>
+                  <div className="h-[21rem] overflow-hidden rounded-[1.25rem] border border-white/20 bg-white/95 shadow-[0_24px_50px_-30px_rgba(15,23,42,0.65)]">
+                    <TemplateDirectionPreview variant={layout.id} />
+                  </div>
                 </div>
               </div>
-              
-              <div className="flex items-center justify-between px-6">
-                <p className="font-black text-[10px] uppercase tracking-[0.4em] text-white/20 group-hover:text-primary transition-colors">{tmpl.name}</p>
-                <div className="h-px w-8 bg-white/5" />
-                <p className="font-medium text-[10px] uppercase tracking-[0.3em] text-white/10">{tmpl.type}</p>
+
+              <div className="space-y-4 p-6">
+                <div className="flex items-center justify-between">
+                  <h3 className="text-xl font-semibold">{layout.name}</h3>
+                  <span className="text-sm text-foreground/50">Format {index + 1}</span>
+                </div>
+                <p className="text-sm leading-7 text-foreground/65">
+                  Keep the same resume data while changing the visual voice to match the role you are applying for.
+                </p>
+                <Button
+                  variant="outline"
+                  onClick={() => router.push('/builder')}
+                  className="border-border/70 bg-transparent group-hover:bg-foreground/5"
+                >
+                  Use this direction <ArrowRight size={16} className="ml-2" />
+                </Button>
               </div>
             </motion.div>
           ))}

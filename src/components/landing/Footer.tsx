@@ -1,76 +1,58 @@
 'use client';
 
-import { FileText, MessageCircle, Code2, Users, Mail } from 'lucide-react';
 import Link from 'next/link';
 
 export function Footer() {
   return (
-    <footer className="py-20 border-t border-border bg-card/10">
-      <div className="container mx-auto px-4">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
-          <div className="col-span-1 md:col-span-1 space-y-6">
-            <div className="flex items-center gap-2">
-              <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-purple text-white shadow-soft">
-                <FileText size={20} />
+    <footer className="border-t border-border/70 bg-background py-20 lg:py-24">
+      <div className="container mx-auto px-6 lg:px-8">
+        <div className="grid gap-12 lg:grid-cols-[1.1fr_0.9fr] lg:gap-20">
+          <div className="space-y-6">
+            <div className="flex items-center gap-3">
+              <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-gradient-to-r from-primary to-accent text-sm font-black text-white shadow-soft">
+                RF
               </div>
-              <span className="text-xl font-bold bg-clip-text text-transparent bg-gradient-purple">
-                Creava Resume
-              </span>
+              <div>
+                <p className="text-lg font-black tracking-[-0.02em]">ResumeFlow</p>
+                <p className="text-sm text-foreground/50">Build sharper resumes with less friction.</p>
+              </div>
             </div>
-            <p className="text-sm text-foreground/50 leading-relaxed font-medium">
-              Empowering job seekers with premium design and data-driven resume building tools.
+
+            <p className="max-w-lg text-base leading-8 text-foreground/65">
+              A guided resume experience with live preview, flexible sections, cleaner layout control, and a calmer path
+              from first draft to final PDF.
             </p>
-            <div className="flex items-center gap-4 text-foreground/40">
-              <MessageCircle size={18} className="hover:text-primary cursor-pointer transition-colors" />
-              <Code2 size={18} className="hover:text-primary cursor-pointer transition-colors" />
-              <Users size={18} className="hover:text-primary cursor-pointer transition-colors" />
+          </div>
+
+          <div className="grid gap-10 sm:grid-cols-2">
+            <div>
+              <p className="mb-5 text-xs font-bold uppercase tracking-[0.28em] text-foreground/40">Navigate</p>
+              <div className="space-y-3 text-sm text-foreground/68">
+                <div><Link href="#features" className="transition-colors hover:text-primary">Features</Link></div>
+                <div><Link href="#templates" className="transition-colors hover:text-primary">Templates</Link></div>
+                <div><Link href="#how-it-works" className="transition-colors hover:text-primary">How it works</Link></div>
+                <div><Link href="/builder" className="transition-colors hover:text-primary">Builder</Link></div>
+              </div>
             </div>
-          </div>
 
-          <div>
-            <h4 className="font-bold mb-6 uppercase tracking-widest text-xs text-foreground/40">Product</h4>
-            <ul className="space-y-4 text-sm font-medium text-foreground/60">
-              <li><Link href="/builder" className="hover:text-primary transition-colors">Builder</Link></li>
-              <li><Link href="#templates" className="hover:text-primary transition-colors">Templates</Link></li>
-              <li><Link href="#features" className="hover:text-primary transition-colors">Features</Link></li>
-              <li><Link href="#" className="hover:text-primary transition-colors">Examples</Link></li>
-            </ul>
-          </div>
-
-          <div>
-            <h4 className="font-bold mb-6 uppercase tracking-widest text-xs text-foreground/40">Company</h4>
-            <ul className="space-y-4 text-sm font-medium text-foreground/60">
-              <li><Link href="#" className="hover:text-primary transition-colors">About Us</Link></li>
-              <li><Link href="#" className="hover:text-primary transition-colors">Privacy Policy</Link></li>
-              <li><Link href="#" className="hover:text-primary transition-colors">Terms of Service</Link></li>
-              <li><Link href="#" className="hover:text-primary transition-colors">Contact</Link></li>
-            </ul>
-          </div>
-
-          <div>
-            <h4 className="font-bold mb-6 uppercase tracking-widest text-xs text-foreground/40">Newsletter</h4>
-            <p className="text-xs text-foreground/50 mb-4 leading-relaxed">
-              Join 5,000+ professionals receiving career tips.
-            </p>
-            <div className="flex gap-2">
-              <input 
-                type="email" 
-                placeholder="Email address" 
-                className="flex-1 bg-background border border-border rounded-xl px-4 py-2 text-xs focus:ring-2 focus:ring-primary/20 outline-none transition-all"
-              />
-              <button className="bg-primary text-white p-2 rounded-xl hover:bg-primary/90 transition-all">
-                <Mail size={16} />
-              </button>
+            <div>
+              <p className="mb-5 text-xs font-bold uppercase tracking-[0.28em] text-foreground/40">Product</p>
+              <div className="space-y-3 text-sm text-foreground/68">
+                <div>Live preview</div>
+                <div>Resume scoring</div>
+                <div>Template switching</div>
+                <div>PDF export</div>
+              </div>
             </div>
           </div>
         </div>
 
-        <div className="pt-8 border-t border-border flex flex-col md:flex-row justify-between items-center gap-4 text-[10px] font-black uppercase tracking-widest text-foreground/30">
-          <p>© 2026 Creava Design Labs. All rights reserved.</p>
-          <div className="flex items-center gap-6">
-            <span>Built with Next.js 15</span>
+        <div className="mt-14 flex flex-col gap-4 border-t border-border/70 pt-8 text-xs uppercase tracking-[0.24em] text-foreground/35 md:flex-row md:items-center md:justify-between">
+          <p>Copyright 2026 ResumeFlow</p>
+          <div className="flex gap-6">
             <span>Privacy</span>
-            <span>Cookies</span>
+            <span>Terms</span>
+            <span>Next.js 16</span>
           </div>
         </div>
       </div>

@@ -66,19 +66,51 @@ interface ResumeStore {
 
 const initialData: ResumeData = {
   basicInfo: {
-    name: '',
-    email: '',
-    phone: '',
-    location: '',
-    role: '',
-    tagline: '',
-    summary: '',
+    name: 'Alex Morgan',
+    email: 'alex.morgan@example.com',
+    phone: '+1 (555) 123-4567',
+    location: 'San Francisco, CA',
+    role: 'Product Designer',
+    tagline: 'Designing simple experiences for complex problems',
+    summary:
+      'Product Designer with 6+ years of experience building user-centered products. Skilled in cross-functional collaboration, prototyping, and crafting accessible interfaces that scale.',
     profileImage: '',
   },
-  experience: [],
-  education: [],
-  skills: [],
-  projects: [],
+  experience: [
+    {
+      id: 'exp-1',
+      company: 'Brightside Labs',
+      role: 'Senior Product Designer',
+      duration: '2021 â€” Present',
+      description:
+        'Led design for the core product, shipped features that increased activation by 18% and reduced task time by 24%. Mentored junior designers and improved the team design system.',
+    },
+    {
+      id: 'exp-2',
+      company: 'Nova Apps',
+      role: 'Product Designer',
+      duration: '2018 â€” 2021',
+      description:
+        'Collaborated with PMs and engineers to define product roadmap, conducted user research and A/B testing to validate concepts.',
+    },
+  ],
+  education: [
+    {
+      id: 'edu-1',
+      school: 'State University',
+      degree: 'B.S. Interaction Design',
+      duration: '2014 â€” 2018',
+    },
+  ],
+  skills: ['Product Design', 'Figma', 'Prototyping', 'User Research', 'Accessibility'],
+  projects: [
+    {
+      id: 'proj-1',
+      name: 'Onboarding Redesign',
+      description: 'Redesigned the onboarding flow to reduce churn and improve activation.',
+      link: 'https://example.com/onboarding',
+    },
+  ],
   templateId: 'modern',
   theme: 'light',
 };
